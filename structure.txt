@@ -1,0 +1,44 @@
+budbuy-ecommerce/
+│
+├── index.html                # Main landing page (home)
+├── category.html             # Category page
+├── product.html              # Product details page
+├── search.html               # Search results page
+├── admin.html                # Main admin dashboard
+├── contact.html              # Contact page
+│
+├── assets/
+│   ├── css/
+│   │   ├── main.css          # General custom styles
+│   │   ├── colors.css        # Custom color palette
+│   │   ├── admin.css         # Specific styles for admin interface
+│   │   ├── product.css       # Specific styles for product page
+│   │   └── bootstrap.min.css # Bootstrap CSS file (optional, if not using CDN)
+│   │
+│   ├── js/
+│   │   ├── main.js           # General JavaScript (event listeners, initializations)
+│   │   ├── dom.js            # Functions for DOM manipulation and templates
+│   │   ├── search.js         # Code for search bar logic and algorithms
+│   │   ├── validation.js     # Form and data input validations
+│   │   ├── admin.js          # Admin-specific interface functions
+│   │   ├── product.js        # Product page-specific functions
+│   │   └── data/
+│   │       ├── products.js   # Product data (JSON or simulated array)
+│   │       ├── reviews.js    # Review data (JSON or simulated array)
+│   │       └── users.js      # User data (JSON or simulated array)
+│   │
+│   ├── images/               # Project images (logos, banners, product images)
+│   │   ├── banners/
+│   │   ├── categories/
+│   │   ├── products/
+│   │   └── icons/
+│   │
+│   └── fonts/                # Custom fonts, if any
+│
+├── components/               # Reusable HTML components
+│   ├── header.html           # Header and navigation bar
+│   ├── search-bar.html       # Search bar
+│   ├── footer.html           # Footer
+│   └── admin-sidebar.html    # Sidebar for admin dashboard
+│
+└── README.md                 # Project documentation

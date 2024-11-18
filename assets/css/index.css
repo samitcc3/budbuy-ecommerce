@@ -1,0 +1,49 @@
+/* General styles */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Custom colors */
+.main-color {
+    color: #2E8B57;
+}
+
+.bg-main {
+    background-color: #2E8B57;
+}
+
+.bg-secondary {
+    background-color: #61bc84;
+}
+
+.text-muted-custom {
+    color: #454545;
+}
+
+/* Slider styles */
+#main-slider {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.carousel-inner img {
+    width: 100%;
+    height: auto;
+}
+
+/* Footer styles */
+footer {
+    background-color: #61bc84;
+    color: white;
+    padding: 20px 0;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+}
+
+footer ul li {
+    margin-bottom: 10px;
+}
