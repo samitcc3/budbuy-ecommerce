@@ -1,0 +1,50 @@
+[
+  {
+    "user_id": 1,
+    "name": "John Doe",
+    "email": "john.doe@gmail.com",
+    "password": "password123",
+    "phone": "4165551234",
+    "address": "123 Main Street, Toronto, ON",
+    "role": "customer",
+    "created_at": "2024-11-20T10:00:00Z",
+    "updated_at": "2024-11-20T10:00:00Z",
+    "is_active": true
+  },
+  {
+    "user_id": 2,
+    "name": "Jane Smith",
+    "email": "jane.smith@yahoo.com",
+    "password": "mypassword",
+    "phone": "9055555678",
+    "address": "456 Queen Street, Mississauga, ON",
+    "role": "customer",
+    "created_at": "2024-11-19T12:30:00Z",
+    "updated_at": "2024-11-19T12:30:00Z",
+    "is_active": true
+  },
+  {
+    "user_id": 3,
+    "name": "Michael Brown",
+    "email": "michael.brown@outlook.com",
+    "password": "securepass",
+    "phone": "6475558765",
+    "address": "789 King Street, Brampton, ON",
+    "role": "customer",
+    "created_at": "2024-11-18T08:15:00Z",
+    "updated_at": "2024-11-18T08:15:00Z",
+    "is_active": true
+  },
+  {
+    "user_id": 4,
+    "name": "Admin User",
+    "email": "admin@admin.com",
+    "password": "123456",
+    "phone": "1235559999",
+    "address": "111 Admin Street, Ottawa, ON",
+    "role": "admin",
+    "created_at": "2024-11-17T14:00:00Z",
+    "updated_at": "2024-11-17T14:00:00Z",
+    "is_active": true
+  }
+]

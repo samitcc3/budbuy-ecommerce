@@ -1,0 +1,30 @@
+/* Styling for the login page */
+
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+  }
+  
+  .login-container {
+    margin-top: 10vh;
+  }
+  
+  .card {
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    border: none;
+  }
+  
+  .card h2 {
+    color: #2E8B57;
+  }
+  
+  .btn-primary {
+    background-color: #2E8B57;
+    border-color: #2E8B57;
+  }
+  
+  .btn-primary:hover {
+    background-color: #61bc84;
+    border-color: #61bc84;
+  }
+  

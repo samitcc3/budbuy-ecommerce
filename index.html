@@ -35,7 +35,7 @@
     
                 <!-- User Account and Cart -->
                 <div class="d-flex align-items-center">
-                    <a href="#" class="text-white mx-3 text-decoration-none">My BudBuy Account</a>
+                    <a href="login.html" class="text-white mx-3 text-decoration-none">My BudBuy Account</a>
                     <a href="#" class="text-white position-relative text-decoration-none">
                         <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
                         <!-- Cart item count -->
@@ -71,14 +71,24 @@
     </nav>
 
     <!-- Search Bar -->
-    <section class="container my-4">
+    <section class="container my-4 position-relative">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search BudBuy...">
+            <input
+                type="text"
+                class="form-control"
+                id="search-input"
+                placeholder="Search BudBuy..."
+                autocomplete="off"
+            >
             <div class="input-group-append">
                 <button class="btn bg-main text-white" type="button">Search</button>
             </div>
         </div>
+        <!-- Results Dropdown -->
+        <div id="search-results-dropdown" class="dropdown-menu w-100 shadow-sm" style="position: absolute; top: 100%; z-index: 1050;"></div>
     </section>
+
+
 
     <!-- Main Banner / Slider -->
     <section id="main-slider" class="mb-5">
@@ -214,5 +224,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- My Scripts -->
     <script src="assets/js/index.js"></script>
+    <script src="assets/js/searchbar.js"></script>
+
 </body>
 </html>

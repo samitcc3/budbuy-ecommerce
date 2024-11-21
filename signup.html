@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BudBuy - Sign Up">
+    <title>BudBuy - Sign Up</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/signup.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div id="header-container" class="bg-main py-2">
+            <div class="container d-flex justify-content-between align-items-center">
+                <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                    <img src="assets/images/logo/budbuy-logo.png" alt="BudBuy Logo" height="40">
+                    <span class="text-white font-weight-bold ml-2" style="font-size: 1.5rem;">BudBuy</span>
+                </a>
+                <a href="login.html" class="btn btn-secondary">Login</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sign Up Form -->
+    <section class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <h2 class="text-center mb-4">Create Your Account</h2>
+                <form id="signup-form" novalidate>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                        <div class="invalid-feedback">Please enter your name.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="example@domain.com" required>
+                        <div class="invalid-feedback">Please enter a valid email address.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" class="form-control" id="password" placeholder="Password" required>
+                        <div class="invalid-feedback">Password must be at least 6 characters.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="123-456-7890" required>
+                        <div class="invalid-feedback">Please enter a valid phone number.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" id="address" placeholder="123 Main Street" required>
+                        <div class="invalid-feedback">Please enter your address.</div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-secondary text-white py-4">
+        <div class="container text-center">
+            <p>&copy; 2024 BudBuy. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="assets/js/signup.js"></script>
+</body>
+</html>
