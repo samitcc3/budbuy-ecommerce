@@ -36,14 +36,13 @@
                 <!-- User Account and Cart -->
                 <div class="d-flex align-items-center">
                     <a href="login.html" class="text-white mx-3 text-decoration-none">My BudBuy Account</a>
-                    <a href="#" class="text-white position-relative text-decoration-none">
+                    <a href="admin.html" id="admin-dashboard-link" class="text-white mx-3 text-decoration-none">Admin Dashboard</a>
+                    <a href="cart.html" class="text-white position-relative text-decoration-none">
                         <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
-                        <!-- Cart item count -->
-                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">
-                            0
-                        </span>
+                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">0</span>
                     </a>
                 </div>
+                
             </div>
         </div>
     </header>
@@ -64,7 +63,7 @@
                     <li class="nav-item"><a href="search.html?category=Tablets" class="nav-link">Tablets</a></li>
                     <li class="nav-item"><a href="search.html?category=Phones" class="nav-link">Phones</a></li>
                     <li class="nav-item"><a href="search.html?category=Laptops" class="nav-link">Laptops</a></li>
-                    <li class="nav-item"><a href="search.html?category=Deals" class="nav-link">Deals</a></li>
+                    <li class="nav-item"><a href="search.html?promotion=Clearance" class="nav-link">Deals</a></li>
                 </ul>
             </div>
         </div>
@@ -223,8 +222,17 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <!-- My Scripts -->
-    <script src="assets/js/index.js"></script>
-    <script src="assets/js/searchbar.js"></script>
+    <script type="module" src="assets/data/productdata.js"></script>
+    <script type="module" src="assets/js/index.js"></script>
+    <script type="module" src="assets/js/searchbar.js"></script>
+
+    <!-- Cart from cart-utils to check items in cart -->
+    <script type="module">
+        import { updateCartCountFromStorage } from './assets/js/cart-utils.js';
+        document.addEventListener("DOMContentLoaded", () => {
+        updateCartCountFromStorage();
+        });
+    </script>
 
 </body>
 </html>

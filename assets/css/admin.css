@@ -1,0 +1,143 @@
+/* General Table Styling */
+.table {
+    margin-bottom: 0;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: #f9f9f9;
+  }
+  
+  .table th, .table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .table th {
+    background-color: #2E8B57; /* Main theme color */
+    color: white;
+    font-weight: bold;
+  }
+  
+  .table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .table tr:hover {
+    background-color: #ddd;
+  }
+  
+  /* Buttons Styling */
+  .btn {
+    font-size: 0.9rem;
+    border-radius: 4px;
+    padding: 5px 10px;
+  }
+  
+  .btn-success {
+    background-color: #61bc84;
+    border: none;
+    color: white;
+  }
+  
+  .btn-success:hover {
+    background-color: #4da56e;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border: none;
+    color: white;
+  }
+  
+  .btn-danger:hover {
+    background-color: #c82333;
+  }
+  
+  /* Inputs Styling */
+  input[type="number"] {
+    width: 80px;
+    padding: 5px;
+    font-size: 0.9rem;
+    text-align: center;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Collapsible Sections */
+  .collapsible {
+    cursor: pointer;
+    background-color: #2E8B57;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    width: 100%;
+  }
+  
+  .collapsible:hover {
+    background-color: #61bc84;
+  }
+  
+  .collapsible:after {
+    content: '\002B';
+    font-size: 1.2rem;
+    float: right;
+  }
+  
+  .collapsible.active:after {
+    content: "\2212";
+  }
+  
+  /* Collapsible Content */
+  .collapsible-content {
+    display: none;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    margin-bottom: 15px;
+  }
+  
+  /* General Styling for the Admin Page */
+  .admin-section {
+    margin: 20px 0;
+  }
+  
+  .admin-section h2 {
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+    color: #2d2d2d;
+    text-align: center;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Mobile Responsiveness */
+  @media (max-width: 768px) {
+    .table th, .table td {
+      font-size: 0.8rem;
+      padding: 10px;
+    }
+  
+    input[type="number"] {
+      width: 60px;
+    }
+  
+    .btn {
+      font-size: 0.8rem;
+      padding: 4px 8px;
+    }
+  
+    .collapsible {
+      font-size: 1rem;
+    }
+  }
+  

@@ -1,74 +1,63 @@
-$(document).ready(() => {
-  const usersDatabasePath = "assets/data/users.json"; // Path to users.json
-  const signupForm = $("#signup-form");
+import { UserData } from "../data/usersdata.js";
 
-  // Fetch the current user data
-  function fetchUsers() {
-    return $.getJSON(usersDatabasePath).catch((error) => {
-      console.error("Failed to fetch user database:", error);
-      alert("Unable to process your request. Please try again later.");
-      throw error;
-    });
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  const userData = new UserData(); // Instantiate the UserData class
+  const signupForm = document.querySelector("#signup-form");
+  const errorMessage = document.querySelector("#signup-error");
 
-  // Simulate writing the updated JSON file
-  function downloadJSONFile(filename, content) {
-    const blob = new Blob([JSON.stringify(content, null, 2)], {
-      type: "application/json",
-    });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = filename;
-    link.click();
-  }
+  signupForm.addEventListener("submit", (event) => {
+    event.preventDefault(); // Prevent default form submission
 
-  // Handle form submission
-  signupForm.on("submit", (e) => {
-    e.preventDefault();
+    // Collect form data
+    const name = document.querySelector("#name").value.trim();
+    const email = document.querySelector("#email").value.trim();
+    const password = document.querySelector("#password").value;
+    const phone = document.querySelector("#phone").value.trim();
+    const address = document.querySelector("#address").value.trim();
 
-    const name = $("#name").val().trim();
-    const email = $("#email").val().trim();
-    const password = $("#password").val().trim();
-    const phone = $("#phone").val().trim();
-    const address = $("#address").val().trim();
+    // Clear previous error messages
+    errorMessage.style.display = "none";
+    errorMessage.textContent = "";
 
-    if (!name || !email || !password || !address) {
-      alert("Please fill out all required fields.");
+    // Validate form data
+    if (!name || !email || !password || !phone || !address) {
+      errorMessage.textContent = "All fields are required.";
+      errorMessage.style.display = "block";
       return;
     }
 
-    fetchUsers()
-      .then((users) => {
-        // Check if the email already exists
-        if (users.some((user) => user.email === email)) {
-          alert("A user with this email already exists.");
-          return;
-        }
+    if (password.length < 6) {
+      errorMessage.textContent = "Password must be at least 6 characters.";
+      errorMessage.style.display = "block";
+      return;
+    }
 
-        // Create new user
-        const newUser = {
-          user_id: users.length + 1,
-          name,
-          email,
-          password, // In production, use a hashing function
-          phone,
-          address,
-          role: "customer", // Default role
-          created_at: new Date().toISOString(),
-          updated_at: new Date().toISOString(),
-          is_active: true,
-        };
+    try {
+      // Check if user already exists
+      if (userData.findUserByEmail(email)) {
+        throw new Error("User already exists. Please use a different email.");
+      }
 
-        // Add the new user to the list
-        users.push(newUser);
+      // Create a new user object
+      const newUser = {
+        name,
+        email,
+        password,
+        phone,
+        address,
+        role: "customer",
+      };
 
-        // Simulate saving the updated JSON file
-        downloadJSONFile("users.json", users);
+      // Sign up the new user
+      userData.signUp(newUser);
 
-        // Notify the user and redirect to login
-        alert("User created successfully! Redirecting to login.");
-        window.location.href = "login.html";
-      })
-      .catch((error) => console.error("Error processing signup:", error));
+      // Success message and redirect
+      alert("Account created successfully!");
+      window.location.href = "login.html";
+    } catch (error) {
+      // Display error message
+      errorMessage.textContent = error.message;
+      errorMessage.style.display = "block";
+    }
   });
 });

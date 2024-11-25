@@ -28,14 +28,13 @@
                     <img src="assets/images/logo/budbuy-logo.png" alt="BudBuy Logo" height="40">
                     <span class="text-white font-weight-bold ml-2" style="font-size: 1.5rem;">BudBuy</span>
                 </a>
-                <!-- Account y Cart -->
+                <!-- User Account and Cart -->
                 <div class="d-flex align-items-center">
-                    <a href="account.html" class="text-white mx-3 text-decoration-none">My BudBuy Account</a>
+                    <a href="login.html" class="text-white mx-3 text-decoration-none">My BudBuy Account</a>
+                    <a href="admin.html" id="admin-dashboard-link" class="text-white mx-3 text-decoration-none">Admin Dashboard</a>
                     <a href="cart.html" class="text-white position-relative text-decoration-none">
                         <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
-                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">
-                            0
-                        </span>
+                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">0</span>
                     </a>
                 </div>
             </div>
@@ -50,13 +49,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
-                    <li class="nav-item"><a href="#" class="nav-link">TV</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Audio</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Wearables</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Tablets</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Phones</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Laptops</a></li>
-                    <li class="nav-item"><a href="#" class="nav-link">Deals</a></li>
+                    <li class="nav-item"><a href="search.html?category=TV" class="nav-link">TV</a></li>
+                    <li class="nav-item"><a href="search.html?category=Audio" class="nav-link">Audio</a></li>
+                    <li class="nav-item"><a href="search.html?category=Wearables" class="nav-link">Wearables</a></li>
+                    <li class="nav-item"><a href="search.html?category=Tablets" class="nav-link">Tablets</a></li>
+                    <li class="nav-item"><a href="search.html?category=Phones" class="nav-link">Phones</a></li>
+                    <li class="nav-item"><a href="search.html?category=Laptops" class="nav-link">Laptops</a></li>
+                    <li class="nav-item"><a href="search.html?promotion=Clearance" class="nav-link">Deals</a></li>
                 </ul>
             </div>
         </div>
@@ -161,7 +160,16 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <!-- Custom JS -->
-    <script src="assets/js/search.js"></script>
+    <!-- My JS -->
+    <script type="module" src="assets/data/productdata.js"></script>
+    <script type="module" src="assets/js/search.js"></script>
+
+        <!-- Cart from cart-utils to check items in cart -->
+        <script type="module">
+            import { updateCartCountFromStorage } from './assets/js/cart-utils.js';
+            document.addEventListener("DOMContentLoaded", () => {
+            updateCartCountFromStorage();
+            });
+        </script>
 </body>
 </html>
