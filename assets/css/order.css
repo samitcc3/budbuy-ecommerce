@@ -1,0 +1,104 @@
+/* Order History Section */
+#order-history {
+    margin: 20px auto;
+    max-width: 800px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+#order-history h4 {
+    color: #2E8B57;
+    font-weight: bold;
+}
+
+#order-history p {
+    margin: 5px 0;
+    color: #454545;
+}
+
+.order-card {
+    margin-bottom: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.order-card h4 {
+    margin-bottom: 10px;
+}
+
+.timeline {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.timeline .progress-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: #ccc;
+    z-index: 1;
+    transition: width 3s ease-in-out;
+}
+
+.timeline .status-point {
+    position: relative;
+    text-align: center;
+    flex: 1;
+}
+
+.timeline .status-point .circle {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #ccc;
+    margin: 0 auto;
+}
+
+.timeline .status-point span {
+    margin-top: 10px;
+    display: block;
+}
+
+.timeline .status-point.active .circle {
+    background: #2E8B57;
+}
+
+.timeline .status-point:hover .circle {
+    box-shadow: 0 0 10px rgba(46, 139, 87, 0.7);
+}
+
+.timeline .truck {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 30px;
+    height: 30px;
+    background: url("assets/images/truck-icon.png") no-repeat center;
+    background-size: contain;
+    z-index: 2;
+  }
+  
+
+.timeline .truck::before {
+    content: "🚚"; /* Fallback emoji for truck */
+    display: block;
+    font-size: 1.5rem;
+    text-align: center;
+    line-height: 30px;
+    color: #555;
+}
+
+.timeline .progress-line.active {
+    background: #2E8B57;
+}

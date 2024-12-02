@@ -6,6 +6,9 @@
     <meta name="description" content="BudBuy Admin Panel">
     <title>BudBuy - Admin Panel</title>
 
+        <!-- Favicon -->
+        <link rel="icon" href="assets/images/logo/budbuy-icon.png" type="image/png">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/admin.css">
@@ -20,19 +23,17 @@
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="admin.html">Admin Panel</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-white" href="logout.html">Logout</a>
-                    </li>
-                </ul>
-            </div>
+                <!-- User Account and Cart -->
+                <div class="d-flex align-items-center">
+                    <div id="account-section">
+                        <a href="login.html" class="text-white mx-3 text-decoration-none">My BudBuy Account</a>
+                    </div>
+                    <a href="admin.html" id="admin-dashboard-link" class="text-white mx-3 text-decoration-none" style="display: none;">Admin Dashboard</a>
+                    <a href="cart.html" class="text-white position-relative text-decoration-none">
+                        <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">0</span>
+                    </a>
+                </div>
         </div>
     </nav>
 
@@ -101,6 +102,7 @@
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="module" src="assets/js/checksession.js"></script>
     <script src="assets/js/admin.js" type="module"></script>
 </body>
 </html>

@@ -101,10 +101,33 @@ export class OrderData {
               order_id: 3,
               user_id: 4,
               product_id: 6,
-              quantity: 1,
+              quantity: 2,
               total_price: 589.99,
               status: "ready",
               date: "2024-11-22T15:00:00Z",
+              shipping_address: {
+                name: "Admin User",
+                address: "111 Admin Street",
+                city: "Ottawa",
+                postal_code: "K1A0B1",
+                country: "Canada",
+              },
+              payment_info: {
+                method: "Credit Card",
+                card_number: "**** **** **** 5678",
+                cvv: "***",
+                exp_date: "2025-08",
+              },
+            },
+            // Order 4: Single product user 4 new order
+            {
+              order_id: 4,
+              user_id: 4,
+              product_id: 6,
+              quantity: 1,
+              total_price: 666.99,
+              status: "delivered",
+              date: "2024-10-15T15:00:00Z",
               shipping_address: {
                 name: "Admin User",
                 address: "111 Admin Street",
@@ -137,8 +160,12 @@ export class OrderData {
 
   // Add a new order
   addOrder(newOrder) {
-    const maxId = Math.max(...this.orders.map((order) => order.order_id), 0);
-    newOrder.order_id = maxId + 1; // Assign next order_id
+    // If order_id already exists, use it; otherwise, generate a new one
+    if (!newOrder.order_id) {
+      const maxId = Math.max(...this.orders.map((order) => order.order_id), 0);
+      newOrder.order_id = maxId + 1; // Assign next order_id
+    }
+
     newOrder.date = new Date().toISOString();
     this.orders.push(newOrder);
     this.saveToStorage();

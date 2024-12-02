@@ -1,40 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Search BudBuy - Find your products easily.">
-    <title>Search BudBuy</title>
+    <meta charset="UTF-8"> <!-- Sets the character encoding to UTF-8 for proper text rendering -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Makes the page responsive on all devices -->
+    <meta name="description" content="Search BudBuy - Find your products easily."> <!-- A short description for SEO -->
+    <title>Search BudBuy</title> <!-- Title of the webpage, shows up on the browser tab -->
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> <!-- Loads Bootstrap for styling -->
+
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/css/search.css">
+    <link rel="stylesheet" href="assets/css/search.css"> <!-- Adds custom styles specific to the search page -->
 
     <!-- Favicon -->
-    <link rel="icon" href="assets/images/logo/budbuy-logo.png" type="image/png">
+    <link rel="icon" href="assets/images/logo/budbuy-icon.png" type="image/png"> <!-- Sets the icon displayed on the browser tab -->
 
     <!-- Bootstrap Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"> <!-- Adds icons from Bootstrap -->
 </head>
 <body>
     <!-- Header -->
     <header>
-        <div id="header-container" class="bg-main py-2">
-            <div class="container d-flex justify-content-between align-items-center">
-                <!-- Logo y Nombre -->
-                <a href="index.html" class="d-flex align-items-center text-decoration-none">
-                    <img src="assets/images/logo/budbuy-logo.png" alt="BudBuy Logo" height="40">
-                    <span class="text-white font-weight-bold ml-2" style="font-size: 1.5rem;">BudBuy</span>
+        <div id="header-container" class="bg-main py-2"> <!-- The main header container with some padding and background -->
+            <div class="container d-flex justify-content-between align-items-center"> <!-- Flex container to align items -->
+                <!-- Logo and Brand Name -->
+                <a href="index.html" class="d-flex align-items-center text-decoration-none"> <!-- Links to the homepage -->
+                    <img src="assets/images/logo/budbuy-logo.png" alt="BudBuy Logo" height="40"> <!-- Brand logo -->
+                    <span class="text-white font-weight-bold ml-2" style="font-size: 1.5rem;">BudBuy</span> <!-- Brand name -->
                 </a>
                 <!-- User Account and Cart -->
-                <div class="d-flex align-items-center">
-                    <a href="login.html" class="text-white mx-3 text-decoration-none">My BudBuy Account</a>
-                    <a href="admin.html" id="admin-dashboard-link" class="text-white mx-3 text-decoration-none">Admin Dashboard</a>
-                    <a href="cart.html" class="text-white position-relative text-decoration-none">
-                        <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
-                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">0</span>
+                <div class="d-flex align-items-center"> <!-- Flex container for account and cart -->
+                    <div id="account-section">
+                        <a href="login.html" class="text-white mx-3 text-decoration-none">My BudBuy Account</a> <!-- Link to login page -->
+                    </div>
+                    <a href="admin.html" id="admin-dashboard-link" class="text-white mx-3 text-decoration-none" style="display: none;">Admin Dashboard</a> <!-- Hidden admin dashboard link -->
+                    <a href="cart.html" class="text-white position-relative text-decoration-none"> <!-- Link to cart -->
+                        <i class="bi bi-cart3" style="font-size: 1.5rem;"></i> <!-- Cart icon from Bootstrap Icons -->
+                        <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">0</span> <!-- Cart item count -->
                     </a>
                 </div>
             </div>
@@ -42,13 +44,14 @@
     </header>
 
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-secondary"> <!-- Main navigation bar -->
         <div class="container">
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"> <!-- Toggle for smaller screens -->
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto">
+            <div class="collapse navbar-collapse" id="navbarNav"> <!-- Collapsible section for nav links -->
+                <ul class="navbar-nav mx-auto"> <!-- Centered nav links -->
+                    <!-- Each nav item links to a specific category or deals -->
                     <li class="nav-item"><a href="search.html?category=TV" class="nav-link">TV</a></li>
                     <li class="nav-item"><a href="search.html?category=Audio" class="nav-link">Audio</a></li>
                     <li class="nav-item"><a href="search.html?category=Wearables" class="nav-link">Wearables</a></li>
@@ -62,41 +65,41 @@
     </nav>
 
     <!-- Main Content -->
-    <div class="container my-5">
+    <div class="container my-5"> <!-- Adds some vertical margin to the content -->
         <div class="row">
             <!-- Filters Section -->
-            <aside class="col-md-3">
-                <div class="filters p-3 border rounded">
+            <aside class="col-md-3"> <!-- Sidebar for filters -->
+                <div class="filters p-3 border rounded"> <!-- Filter container with padding and border -->
                     <div class="d-flex justify-content-between align-items-center">
-                        <h4>Filters</h4>
-                        <button id="reset-filters" class="btn btn-sm btn-outline-secondary">Reset</button>
+                        <h4>Filters</h4> <!-- Section title -->
+                        <button id="reset-filters" class="btn btn-sm btn-outline-secondary">Reset</button> <!-- Reset button -->
                     </div>
                     <hr>
                     <!-- Promotions -->
                     <div class="filter-section mb-3">
                         <h5>Promotions</h5>
                         <ul id="promotion-filters" class="list-unstyled">
-                            <!-- Dynamically filled -->
+                            <!-- Promotions dynamically filled with JS -->
                         </ul>
                     </div>
                     <!-- Categories -->
                     <div class="filter-section mb-3">
                         <h5>Categories</h5>
                         <ul id="category-filters" class="list-unstyled">
-                            <!-- Dynamically filled -->
+                            <!-- Categories dynamically filled with JS -->
                         </ul>
                     </div>
                     <!-- Brands -->
                     <div class="filter-section mb-3">
                         <h5>Brands</h5>
                         <ul id="brand-filters" class="list-unstyled">
-                            <!-- Dynamically filled -->
+                            <!-- Brands dynamically filled with JS -->
                         </ul>
                     </div>
                     <!-- Price Range -->
                     <div class="filter-section">
                         <h5>Price Range</h5>
-                        <div class="d-flex align-items-center">
+                        <div class="d-flex align-items-center"> <!-- Inputs for min and max price -->
                             <input type="number" id="min-price" class="form-control mr-2" placeholder="Min">
                             <input type="number" id="max-price" class="form-control" placeholder="Max">
                         </div>
@@ -104,32 +107,31 @@
                 </div>
             </aside>
 
-
             <!-- Products Section -->
-            <main class="col-md-9">
+            <main class="col-md-9"> <!-- Main section for products -->
                 <!-- Sort Options -->
-                <div class="d-flex justify-content-between align-items-center mb-3">
-                    <h4>Products</h4>
-                    <select id="sort-options" class="form-control w-auto">
+                <div class="d-flex justify-content-between align-items-center mb-3"> <!-- Sorting options -->
+                    <h4>Products</h4> <!-- Section title -->
+                    <select id="sort-options" class="form-control w-auto"> <!-- Dropdown for sorting -->
                         <option value="best-match">Best Match</option>
                         <option value="low-to-high">Price: Low to High</option>
                         <option value="high-to-low">Price: High to Low</option>
                     </select>
                 </div>
                 <!-- Products Grid -->
-                <div class="row" id="search-results">
-                    <!-- Dynamically filled -->
+                <div class="row" id="search-results"> <!-- Grid for displaying products -->
+                    <!-- Dynamically filled with JS -->
                 </div>
             </main>
         </div>
     </div>
 
     <!-- Footer -->
-    <footer class="bg-secondary text-white py-4">
+    <footer class="bg-secondary text-white py-4"> <!-- Footer with background and padding -->
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <h5>Contact Us</h5>
+                    <h5>Contact Us</h5> <!-- Contact section -->
                     <ul class="list-unstyled">
                         <li>Help Center</li>
                         <li>Return Policy</li>
@@ -137,14 +139,14 @@
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5>Corporate Information</h5>
+                    <h5>Corporate Information</h5> <!-- Corporate section -->
                     <ul class="list-unstyled">
                         <li>About BudBuy</li>
                         <li>Privacy Policy</li>
                     </ul>
                 </div>
                 <div class="col-md-4">
-                    <h5>Follow Us</h5>
+                    <h5>Follow Us</h5> <!-- Social media links -->
                     <ul class="list-unstyled">
                         <li>Facebook</li>
                         <li>Twitter</li>
@@ -156,20 +158,22 @@
     </footer>
 
     <!-- Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> <!-- jQuery for Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.6/dist/umd/popper.min.js"></script> <!-- Popper for tooltips -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> <!-- Bootstrap JS -->
 
     <!-- My JS -->
-    <script type="module" src="assets/data/productdata.js"></script>
-    <script type="module" src="assets/js/search.js"></script>
+    <script type="module" src="assets/js/checksession.js"></script> <!-- Checks if the user is logged in -->
+    <script type="module" src="assets/data/productdata.js"></script> <!-- Loads product data -->
+    <script type="module" src="assets/js/search.js"></script> <!-- Main logic for search functionality -->
 
-        <!-- Cart from cart-utils to check items in cart -->
-        <script type="module">
-            import { updateCartCountFromStorage } from './assets/js/cart-utils.js';
-            document.addEventListener("DOMContentLoaded", () => {
+    <!-- Cart from cart-utils to check items in cart -->
+    <script type="module">
+        import { updateCartCountFromStorage } from './assets/js/cart-utils.js';
+        document.addEventListener("DOMContentLoaded", () => {
             updateCartCountFromStorage();
-            });
-        </script>
+        });
+    </script>
 </body>
 </html>
+

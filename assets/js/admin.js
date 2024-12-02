@@ -13,25 +13,26 @@ document.addEventListener("DOMContentLoaded", () => {
     const usersTableBody = document.querySelector("#users-management tbody");
     usersTableBody.innerHTML = ""; // Clear table before appending
 
-    userData.getAllUsers().forEach((user) => {
+    userData.getAllUsers(false).forEach((user) => {
+      // Get all users, including inactive ones
       const status = user.is_active ? "Active" : "Inactive";
       const row = `
-                <tr>
-                    <td>${user.user_id}</td>
-                    <td>${user.name}</td>
-                    <td>${user.email}</td>
-                    <td>${user.phone}</td>
-                    <td>${user.role}</td>
-                    <td>${status}</td>
-                    <td>
-                        <button class="btn btn-danger btn-sm toggle-status" data-id="${
-                          user.user_id
-                        }">
-                            ${user.is_active ? "Deactivate" : "Activate"}
-                        </button>
-                    </td>
-                </tr>
-            `;
+      <tr>
+        <td>${user.user_id}</td>
+        <td>${user.name}</td>
+        <td>${user.email}</td>
+        <td>${user.phone}</td>
+        <td>${user.role}</td>
+        <td>${status}</td>
+        <td>
+          <button class="btn btn-sm ${
+            user.is_active ? "btn-danger" : "btn-success"
+          } toggle-status" data-id="${user.user_id}">
+            ${user.is_active ? "Deactivate" : "Activate"}
+          </button>
+        </td>
+      </tr>
+    `;
       usersTableBody.insertAdjacentHTML("beforeend", row);
     });
 
@@ -39,8 +40,17 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".toggle-status").forEach((button) => {
       button.addEventListener("click", (e) => {
         const userId = parseInt(e.target.getAttribute("data-id"));
-        userData.toggleUserStatus(userId);
-        loadUsers(); // Refresh table
+        const user = userData.users.find((u) => u.user_id === userId);
+
+        if (user.is_active) {
+          const success = userData.deactivateUser(userId);
+          if (success) alert(`User ${userId} deactivated successfully.`);
+        } else {
+          const success = userData.activateUser(userId);
+          if (success) alert(`User ${userId} activated successfully.`);
+        }
+
+        loadUsers(); // Refresh the user list
       });
     });
   }
@@ -61,13 +71,13 @@ document.addEventListener("DOMContentLoaded", () => {
                     <td>$${product.price.toFixed(2)}</td>
                     <td>
                         <input type="number" class="form-control form-control-sm stock-input" 
-                               data-id="${product.product_id}" value="${
+                               data-sku="${product.sku}" value="${
         product.stock
       }" />
                     </td>
                     <td>
-                        <button class="btn btn-primary btn-sm update-stock" data-id="${
-                          product.product_id
+                        <button class="btn btn-primary btn-sm update-stock" data-sku="${
+                          product.sku
                         }">Update</button>
                     </td>
                 </tr>
@@ -78,14 +88,19 @@ document.addEventListener("DOMContentLoaded", () => {
     // Add event listeners for stock updates
     document.querySelectorAll(".update-stock").forEach((button) => {
       button.addEventListener("click", (e) => {
-        const productId = parseInt(e.target.getAttribute("data-id"));
+        const sku = parseInt(e.target.getAttribute("data-sku"));
         const newStock = parseInt(
-          document.querySelector(`.stock-input[data-id="${productId}"]`).value
+          document.querySelector(`.stock-input[data-sku="${sku}"]`).value
         );
 
         if (!isNaN(newStock) && newStock >= 0) {
-          productData.updateProductStock(productId, newStock);
-          alert("Stock updated successfully!");
+          const isUpdated = productData.editStock(sku, newStock);
+          if (isUpdated) {
+            alert(`Stock updated successfully for product SKU: ${sku}`);
+            loadProducts(); // Refresh the table
+          } else {
+            alert(`Failed to update stock for product SKU: ${sku}`);
+          }
         } else {
           alert("Please enter a valid stock value.");
         }

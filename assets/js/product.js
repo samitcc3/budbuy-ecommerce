@@ -18,8 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
   // Find the product by SKU
   const product = productData.findProductBySKU(sku);
 
-  // If product doesn't exist or stock is 0, redirect to 404
-  if (!product || product.stock === 0) {
+  // Handle cases for invalid SKU
+  if (!product) {
     window.location.href = "404.html";
     return;
   }
@@ -66,10 +66,21 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelector(".col-md-6:nth-child(2) .text-danger").remove();
   }
 
-  document.querySelector("#quantity").setAttribute("max", product.stock);
-  document.querySelector(
-    "#stock-count"
-  ).textContent = `${product.stock} in stock`;
+  const stockElement = document.querySelector("#stock-count");
+  const quantityInput = document.querySelector("#quantity");
+  const addToCartButton = document.querySelector("#add-to-cart");
+
+  // Check stock availability
+  if (product.stock === 0) {
+    stockElement.textContent = "No Stock Available"; // Display no stock message
+    stockElement.style.color = "red"; // Highlight the message in red
+    quantityInput.setAttribute("disabled", "true"); // Disable quantity input
+    addToCartButton.setAttribute("disabled", "true"); // Disable Add to Cart button
+    addToCartButton.textContent = "Unavailable"; // Change button text
+  } else {
+    stockElement.textContent = `${product.stock} in stock`; // Display stock count
+    quantityInput.setAttribute("max", product.stock);
+  }
 
   // Fill product description
   document.querySelector("#product-details").textContent = product.details;
@@ -153,8 +164,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Add to Cart button functionality
-  document.querySelector("#add-to-cart").addEventListener("click", () => {
-    const quantity = parseInt(document.querySelector("#quantity").value, 10);
+  addToCartButton.addEventListener("click", () => {
+    const quantity = parseInt(quantityInput.value, 10);
 
     if (quantity > 0 && quantity <= product.stock) {
       cartData.addToCart(product, quantity); // Add product to cart

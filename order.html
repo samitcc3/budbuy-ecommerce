@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Order History - BudBuy">
+  <title>BudBuy - Order History</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+  <!-- Truck animation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="assets/css/index.css">
+  <link rel="stylesheet" href="assets/css/order.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/logo/budbuy-icon.png" type="image/png">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div id="header-container" class="bg-main py-2">
+      <div class="container d-flex justify-content-between align-items-center">
+        <div class="d-flex align-items-center">
+          <a href="index.html" class="d-flex align-items-center text-decoration-none">
+            <img src="assets/images/logo/budbuy-logo.png" alt="BudBuy Logo" height="40">
+            <span class="text-white font-weight-bold ml-2" style="font-size: 1.5rem;">BudBuy</span>
+          </a>
+        </div>
+        <div id="account-section" class="d-flex align-items-center">
+          <a href="login.html" class="text-white mx-3 text-decoration-none">My BudBuy Account</a>
+          <a href="admin.html" id="admin-dashboard-link" class="text-white mx-3 text-decoration-none" style="display: none;">Admin Dashboard</a>
+          <a href="cart.html" class="text-white position-relative text-decoration-none">
+            <i class="bi bi-cart3" style="font-size: 1.5rem;"></i>
+            <span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.75rem;">0</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Order History Section -->
+  <section class="container my-5">
+    <h2 class="text-center mb-4">Your Order History</h2>
+    <div id="order-history">
+      <!-- Dynamic content will be injected here via JavaScript -->
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-secondary text-white py-4">
+    <div class="container">
+      <p class="text-center mb-0">© 2024 BudBuy. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script type="module" src="assets/data/session.js"></script>
+  <script type="module" src="assets/data/orderdata.js"></script>
+  <script type="module" src="assets/js/checksession.js"></script>
+  <script type="module" src="assets/js/order.js"></script>
+</body>
+</html>

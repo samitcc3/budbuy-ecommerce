@@ -87,4 +87,28 @@ export class UserData {
     this.saveToStorage(); // Persist changes
     return newUser;
   }
+
+  // Deactivate a user
+  deactivateUser(userId) {
+    const user = this.users.find((user) => user.user_id === userId);
+    if (user && user.is_active) {
+      user.is_active = false;
+      user.updated_at = new Date().toISOString();
+      this.saveToStorage(); // Persist changes
+      return true; // Indicate successful deactivation
+    }
+    return false; // User not found or already inactive
+  }
+
+  // Activate a user
+  activateUser(userId) {
+    const user = this.users.find((user) => user.user_id === userId);
+    if (user && !user.is_active) {
+      user.is_active = true;
+      user.updated_at = new Date().toISOString();
+      this.saveToStorage(); // Persist changes
+      return true; // Indicate successful activation
+    }
+    return false; // User not found or already active
+  }
 }

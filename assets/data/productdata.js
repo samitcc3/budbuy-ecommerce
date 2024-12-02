@@ -14,7 +14,7 @@ export class ProductData {
               sku: 3096122,
               category: "TV",
               brand: "Samsung",
-              stock: 10,
+              stock: 1,
               updated_at: "10/11/2024",
               price: 399.99,
               discount: 50.0,
@@ -397,5 +397,12 @@ export class ProductData {
     const isDeleted = this.products.length < initialLength;
     if (isDeleted) this.saveToStorage(); // Persist changes if deletion occurred
     return isDeleted;
+  }
+
+  //get Product by ID
+  getProductById(productId) {
+    return (
+      this.products.find((product) => product.product_id === productId) || null
+    );
   }
 }

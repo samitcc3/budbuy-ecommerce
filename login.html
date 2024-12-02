@@ -12,12 +12,46 @@
   <!-- Custom CSS -->
   <link rel="stylesheet" href="assets/css/login.css">
 
-  <!-- Favicon -->
-  <link rel="icon" href="assets/images/logo/budbuy-logo.png" type="image/png">
+    <!-- Favicon -->
+    <link rel="icon" href="assets/images/logo/budbuy-icon.png" type="image/png">
 </head>
 <body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-secondary">
+    <div class="container">
+      <!-- Logo -->
+      <a class="navbar-brand" href="index.html">
+        <img src="assets/images/logo/budbuy-logo.png" alt="BudBuy Logo" height="40">
+        <span class="font-weight-bold ml-2">BudBuy</span>
+      </a>
+
+      <!-- Toggler for mobile view -->
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Navbar Links -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cart.html">Cart</a>
+          </li>
+          <li class="nav-item" id="account-section">
+            <a href="login.html" class="nav-link">My BudBuy Account</a>
+          </li>
+          <li class="nav-item" id="admin-dashboard-link" style="display: none;">
+            <a href="admin.html" class="nav-link">Admin Dashboard</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <!-- Login Form -->
-  <section class="login-container">
+  <section class="login-container mt-5">
     <div class="container">
       <div class="row justify-content-center">
         <div class="col-md-6">
@@ -53,9 +87,7 @@
 
   <!-- Include Session.js before Login.js -->
   <script type="module" src="assets/data/session.js"></script>
+  <script type="module" src="assets/js/checksession.js"></script>
   <script type="module" src="assets/js/login.js"></script>
-
-
-  
 </body>
 </html>
