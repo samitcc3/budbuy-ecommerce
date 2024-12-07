@@ -30,58 +30,74 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Fill the static HTML content dynamically
   if (product.discount > 0) {
+    // Add a discount name tag if the product has a discount
     const discountTag = `<span class="badge badge-danger mb-2">${product.discount_name}</span>`;
     document
-      .querySelector(".col-md-6:nth-child(2)")
-      .insertAdjacentHTML("afterbegin", discountTag);
+      .querySelector(".col-md-6:nth-child(2)") // Select the container for product details
+      .insertAdjacentHTML("afterbegin", discountTag); // Insert the discount tag at the beginning of the container
   }
 
+  // Set the product image dynamically
   document
-    .querySelector(".col-md-6:nth-child(1) img")
-    .setAttribute("src", product.image_url);
+    .querySelector(".col-md-6:nth-child(1) img") // Select the product image element
+    .setAttribute("src", product.image_url); // Set the image source URL
   document
-    .querySelector(".col-md-6:nth-child(1) img")
-    .setAttribute("alt", product.name);
+    .querySelector(".col-md-6:nth-child(1) img") // Select the product image element
+    .setAttribute("alt", product.name); // Set the alt text for accessibility
 
+  // Set the product name dynamically
   document.querySelector(".col-md-6:nth-child(2) h1").textContent =
     product.name;
+
+  // Set the product SKU (Stock Keeping Unit) dynamically
   document.querySelector(
     ".col-md-6:nth-child(2) p:nth-of-type(1)"
-  ).innerHTML = `<strong>Item:</strong> ${product.sku}`;
+  ).innerHTML = `
+  <strong>Item:</strong> ${product.sku}
+`;
 
+  // Calculate the discounted price if a discount exists, otherwise use the original price
   const discountedPrice =
     product.discount > 0
-      ? (product.price * (1 - product.discount / 100)).toFixed(2)
-      : product.price.toFixed(2);
+      ? (product.price * (1 - product.discount / 100)).toFixed(2) // Calculate the discounted price
+      : product.price.toFixed(2); // Use the original price if no discount
 
+  // Display the discounted or original price
   document.querySelector(
     ".col-md-6:nth-child(2) .text-success"
   ).textContent = `$${discountedPrice}`;
 
-  //Fill product price if there's a discount
+  // If the product has a discount, display the original price with a strikethrough and a discount badge
   if (product.discount > 0) {
     document.querySelector(".col-md-6:nth-child(2) .text-danger").innerHTML = `
-      <s>$${product.price.toFixed(2)}</s>
-      <span class="badge badge-warning ml-2">${product.discount}% OFF</span>
-    `;
+    <s>$${product.price.toFixed(
+      2
+    )}</s> <!-- Original price with strikethrough -->
+    <span class="badge badge-warning ml-2">${
+      product.discount
+    }% OFF</span> <!-- Discount percentage badge -->
+  `;
   } else {
+    // Remove the original price element if no discount exists
     document.querySelector(".col-md-6:nth-child(2) .text-danger").remove();
   }
 
-  const stockElement = document.querySelector("#stock-count");
-  const quantityInput = document.querySelector("#quantity");
-  const addToCartButton = document.querySelector("#add-to-cart");
+  // Handle stock availability dynamically
+  const stockElement = document.querySelector("#stock-count"); // Element to display stock availability
+  const quantityInput = document.querySelector("#quantity"); // Input element for product quantity
+  const addToCartButton = document.querySelector("#add-to-cart"); // Button to add the product to the cart
 
-  // Check stock availability
+  // Check if the product is out of stock
   if (product.stock === 0) {
     stockElement.textContent = "No Stock Available"; // Display no stock message
     stockElement.style.color = "red"; // Highlight the message in red
-    quantityInput.setAttribute("disabled", "true"); // Disable quantity input
-    addToCartButton.setAttribute("disabled", "true"); // Disable Add to Cart button
-    addToCartButton.textContent = "Unavailable"; // Change button text
+    quantityInput.setAttribute("disabled", "true"); // Disable the quantity input field
+    addToCartButton.setAttribute("disabled", "true"); // Disable the Add to Cart button
+    addToCartButton.textContent = "Unavailable"; // Update the button text to reflect unavailability
   } else {
-    stockElement.textContent = `${product.stock} in stock`; // Display stock count
-    quantityInput.setAttribute("max", product.stock);
+    // If the product is in stock, display the available stock count
+    stockElement.textContent = `${product.stock} in stock`; // Show the stock count
+    quantityInput.setAttribute("max", product.stock); // Limit the maximum quantity input to the available stock
   }
 
   // Fill product description
