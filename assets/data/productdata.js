@@ -14,7 +14,7 @@ export class ProductData {
               sku: 3096122,
               category: "TV",
               brand: "Samsung",
-              stock: 1,
+              stock: 10,
               updated_at: "10/11/2024",
               price: 399.99,
               discount: 50.0,
@@ -404,5 +404,20 @@ export class ProductData {
     return (
       this.products.find((product) => product.product_id === productId) || null
     );
+  }
+
+  //Professor update
+  // Update discount of a product
+  updateDiscount(sku, newDiscount, discountName = null, discountExp = null) {
+    const product = this.findProductBySKU(sku);
+    if (product) {
+      product.discount = newDiscount;
+      product.discount_name = discountName;
+      product.discount_exp = discountExp;
+      product.updated_at = new Date().toISOString();
+      this.saveToStorage(); // Persist changes
+      return true;
+    }
+    return false;
   }
 }

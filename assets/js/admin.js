@@ -64,46 +64,60 @@ document.addEventListener("DOMContentLoaded", () => {
 
     productData.getAllProducts().forEach((product) => {
       const row = `
-                <tr>
-                    <td>${product.product_id}</td>
-                    <td>${product.name}</td>
-                    <td>${product.category}</td>
-                    <td>$${product.price.toFixed(2)}</td>
-                    <td>
-                        <input type="number" class="form-control form-control-sm stock-input" 
-                               data-sku="${product.sku}" value="${
-        product.stock
+        <tr>
+          <td>${product.product_id}</td>
+          <td>${product.name}</td>
+          <td>${product.category}</td>
+          <td>$${product.price.toFixed(2)}</td>
+          <td>
+            <input type="number" class="form-control form-control-sm stock-input" 
+                   data-sku="${product.sku}" value="${product.stock}" />
+          </td>
+          <td>
+            <input type="number" class="form-control form-control-sm discount-input" 
+                   data-sku="${product.sku}" value="${
+        product.discount
+      }" min="0" max="100" step="0.01" />
+          </td>
+          <td>
+            <input type="text" class="form-control form-control-sm discount-name-input" 
+                   data-sku="${product.sku}" value="${
+        product.discount_name || ""
       }" />
-                    </td>
-                    <td>
-                        <button class="btn btn-primary btn-sm update-stock" data-sku="${
-                          product.sku
-                        }">Update</button>
-                    </td>
-                </tr>
-            `;
+          </td>
+          <td>
+            <button class="btn btn-primary btn-sm update-product" data-sku="${
+              product.sku
+            }">Update</button>
+          </td>
+        </tr>
+      `;
       productsTableBody.insertAdjacentHTML("beforeend", row);
     });
 
-    // Add event listeners for stock updates
-    document.querySelectorAll(".update-stock").forEach((button) => {
+    // Add event listeners for product updates
+    document.querySelectorAll(".update-product").forEach((button) => {
       button.addEventListener("click", (e) => {
         const sku = parseInt(e.target.getAttribute("data-sku"));
         const newStock = parseInt(
           document.querySelector(`.stock-input[data-sku="${sku}"]`).value
         );
+        const newDiscount = parseFloat(
+          document.querySelector(`.discount-input[data-sku="${sku}"]`).value
+        );
+        const newDiscountName = document.querySelector(
+          `.discount-name-input[data-sku="${sku}"]`
+        ).value;
 
         if (!isNaN(newStock) && newStock >= 0) {
-          const isUpdated = productData.editStock(sku, newStock);
-          if (isUpdated) {
-            alert(`Stock updated successfully for product SKU: ${sku}`);
-            loadProducts(); // Refresh the table
-          } else {
-            alert(`Failed to update stock for product SKU: ${sku}`);
-          }
-        } else {
-          alert("Please enter a valid stock value.");
+          productData.editStock(sku, newStock);
         }
+        if (!isNaN(newDiscount) && newDiscount >= 0) {
+          productData.updateDiscount(sku, newDiscount, newDiscountName);
+        }
+
+        alert(`Product SKU: ${sku} updated successfully!`);
+        loadProducts(); // Refresh the table
       });
     });
   }

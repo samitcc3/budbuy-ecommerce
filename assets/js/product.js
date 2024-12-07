@@ -58,10 +58,12 @@ document.addEventListener("DOMContentLoaded", () => {
     ".col-md-6:nth-child(2) .text-success"
   ).textContent = `$${discountedPrice}`;
 
+  //Fill product price if there's a discount
   if (product.discount > 0) {
-    document.querySelector(
-      ".col-md-6:nth-child(2) .text-danger"
-    ).innerHTML = `<s>$${product.price.toFixed(2)}</s>`;
+    document.querySelector(".col-md-6:nth-child(2) .text-danger").innerHTML = `
+      <s>$${product.price.toFixed(2)}</s>
+      <span class="badge badge-warning ml-2">${product.discount}% OFF</span>
+    `;
   } else {
     document.querySelector(".col-md-6:nth-child(2) .text-danger").remove();
   }
